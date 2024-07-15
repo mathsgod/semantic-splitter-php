@@ -1,5 +1,6 @@
 {
     "name": "mathsgod/semantic-splitter-php",
+    "description": "A PHP library for splitting the paragraphs of a text into sentences based on semantic meaning.",
     "authors": [
         {
             "name": "Raymond Chong",
