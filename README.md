@@ -1,6 +1,6 @@
 # Semantic Text Splitter
 
-This is a simple tool to split a text into sentences by semantic meaning.
+This is a simple tool to split a text into sentences by semantic meaning. Each sentence will be grouped together if they have similar meaning. Each sentence should be separated by a newline character.
 
 ## Installation
 
