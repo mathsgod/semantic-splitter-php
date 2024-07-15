@@ -28,4 +28,26 @@ print_r($sentences);
 ```
 
 
+### Embedding retriever
+
+Semantic Text Splitter requires an embedding retriever to work. You can implement your own retriever by implementing the `TextSplitter\EmbeddingRetrieverInterface` interface.
+
+```php
+
+class MyEmbeddingRetriever implements TextSplitter\EmbeddingRetrieverInterface
+{
+    public function getEmbedding(string $text): array
+    {
+        // Implement your own embedding retriever here
+        // for example, you can use OpenAI to get the embedding of the text
+        return [0.1, 0.2, 0.3];
+    }
+}
+
+```
+
+
+
+
+
 
