@@ -12,7 +12,7 @@ composer require mathsgod/semantic-splitter-php
 
 ```php
 
-$splitter = new TextSplitter\SemanticTextSplitter(new EmbeddingRetriever());
+$splitter = new TextSplitter\SemanticTextSplitter(new MyEmbeddingRetriever());
 
 $sentences= $splitter->split("I am a sentence. 
 I am another sentence.
