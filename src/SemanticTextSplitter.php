@@ -88,7 +88,7 @@ class SemanticTextSplitter
             }
         }
 
-        if ($max <= 0.3) {
+        if ($max <= $threshold) {
             return null;
         }
         return $max_index;
