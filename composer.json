@@ -6,13 +6,12 @@
             "email": "mathsgod@yahoo.com"
         }
     ],
-    "require": {
-        "mathsgod/openai-client": "^1.3",
-        "symfony/css-selector": "^6.0"
-    },
     "autoload": {
         "psr-4": {
             "TextSplitter\\": "src/"
         }
+    },
+    "require-dev": {
+        "mathsgod/openai-client": "^1.3"
     }
 }
