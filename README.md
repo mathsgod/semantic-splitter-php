@@ -25,7 +25,24 @@ I am a sentence that is a question?
 
 print_r($sentences);
 
+
 ```
+
+/// Output
+```
+Array
+(
+    [0] => I am a sentence.
+I am another sentence.
+I am a sentence that is a question?
+    [1] => 這是一個中文句子。
+這是另一個中文句子。
+如果句子意思接近, 這個工具會把他們放在一起。
+如果句子意思不接近, 這個工具會把他們分開。
+作者: 陳大文
+)
+```
+
 
 
 ### Embedding retriever
