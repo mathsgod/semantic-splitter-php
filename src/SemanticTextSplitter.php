@@ -5,11 +5,13 @@ namespace TextSplitter;
 class SemanticTextSplitter
 {
 
-    public $embeddingRetriever;
+    protected $embeddingRetriever;
+    protected $threshold;
 
-    public function __construct(EmbeddingRetrieverInterface $embeddingRetriever)
+    public function __construct(EmbeddingRetrieverInterface $embeddingRetriever, float $threshold = 0.3)
     {
         $this->embeddingRetriever = $embeddingRetriever;
+        $this->threshold = $threshold;
     }
 
     public function splitText(string $text)
@@ -37,10 +39,10 @@ class SemanticTextSplitter
             ];
         }
 
-        $index = self::find_the_most_similar_index($final);
+        $index = self::find_the_most_similar_index($final, $this->threshold);
         while ($index !== null) {
             $final = self::merge_paragraph($final, $index);
-            $index = self::find_the_most_similar_index($final);
+            $index = self::find_the_most_similar_index($final, $this->threshold);
         }
 
         return array_column($final, "content");
@@ -52,7 +54,7 @@ class SemanticTextSplitter
     }
 
 
-    public static function add_vector($v1, $v2)
+    private static function add_vector($v1, $v2)
     {
         $result = [];
         for ($i = 0; $i < count($v1); $i++) {
@@ -71,7 +73,7 @@ class SemanticTextSplitter
         return $result;
     }
 
-    public static function find_the_most_similar_index($data)
+    private static function find_the_most_similar_index($data, $threshold = 0.3)
     {
 
         //find the most similar paragraph pair
@@ -92,7 +94,7 @@ class SemanticTextSplitter
         return $max_index;
     }
 
-    public static function merge_paragraph($data, $index)
+    private static function merge_paragraph($data, $index)
     {
         $data[$index]["content"] .= "\n" . $data[$index + 1]["content"];
         $data[$index]["embedding"] = self::add_vector($data[$index]["embedding"], $data[$index + 1]["embedding"]);
