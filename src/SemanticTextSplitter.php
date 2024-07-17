@@ -14,9 +14,8 @@ class SemanticTextSplitter
         $this->threshold = $threshold;
     }
 
-    public function splitText(string $text)
+    public function splitTextWithEmbedding(string $text)
     {
-
         $paragraphs = $this->splitByParagraph($text);
 
         //trim each paragraph
@@ -45,7 +44,13 @@ class SemanticTextSplitter
             $index = self::find_the_most_similar_index($final, $this->threshold);
         }
 
-        return array_column($final, "content");
+        return $final;
+    }
+
+    public function splitText(string $text)
+    {
+        $data = $this->splitTextWithEmbedding($text);
+        return array_column($data, "content");
     }
 
     private function splitByParagraph($data)
